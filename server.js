@@ -4,7 +4,7 @@ var express = require('express'),
     Twit = require('twit'),
     config = {    
       twitter: {
-        consumer_key: process.env.CONSUMER_KEY,
+        consumer_key: process.env.CONSUMER_KEY, //Gets the consumer, and access api keys as provited in the process.env file. Not included inthis repo bc.... Nah
         consumer_secret: process.env.CONSUMER_SECRET,
         access_token: process.env.ACCESS_TOKEN,
         access_token_secret: process.env.ACCESS_TOKEN_SECRET
@@ -33,7 +33,7 @@ var listener = app.listen(process.env.PORT, function(){
   console.log('Countdown bot is running on port ' + listener.address().port);
 });
 
-//The date here is the 
+//The date here is the date that you want to have the bot count down to.
 var countdownMonth=10;
 var countdownDay=15;
 
@@ -68,7 +68,7 @@ function countdownMessage() {
     /*                                                  The start of the calculations start here. Because the bot posts an update once every day the minutes and hours is not needed.
      if(diffDuration.months() > 1 )                     The bot started when there was less than a month remaining, so the months calculation has been commented out. 
      {
-			status += ` ${diffDuration.months()} months,`;
+			status += ` ${diffDuration.months()} months,`;    The bot can easily be changed if the date is more than one year away. For now it simply measures in months being the highest denomination
      } 
      else if (diffDuration.months() == 1 )
      {
@@ -83,7 +83,7 @@ function countdownMessage() {
      {
 			status += ` ${diffDuration.days()} day`;
    	 }
-    /*
+    /*    The following commented out code removes the hours and minutes from the countdown. As the bot is just counting the days this is not needed. 
     if(diffDuration.hours() > 1 )
      {
 			status += ` ${diffDuration.hours()} hours,`;
